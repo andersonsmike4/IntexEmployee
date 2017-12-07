@@ -1,0 +1,143 @@
+﻿.wrapper {
+    display: flex;
+}
+
+/*CSS for Tableau Dashboard Page*/
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 90vh;
+}
+
+#sidebar {
+    transition: all 0.3s;
+    font-family: Dubai;
+    color: dimgrey;
+    background-color: rgba(240,243,243,0.6);
+}
+
+    #sidebar .sidebar-header {
+        padding: 20px;
+        font-family: Dubai;
+    }
+
+    #sidebar p {
+        font-size: 1.1em;
+        font-weight: 300;
+        line-height: 1.7em;
+        color: #999;
+    }
+
+    #sidebar a, a:hover, a:focus {
+        color: inherit;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    #sidebar ul.components {
+        padding: 20px 0;
+        /*background-color: rgb(240, 243, 243);
+        background-color: rgba(255,255,255,0.6);
+        color: #65B0AA;*/
+    }
+
+    #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+    }
+
+        #sidebar ul li a:hover {
+            color: #65B0AA;
+            background: #fff;
+        }
+
+    #sidebar ul li.active > a, a[aria-expanded="true"] {
+        color: #fff;
+        background: #65B0AA;
+    }
+
+    #sidebar ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important;
+        background-color: darkgray;
+        color: #fff;
+    }
+
+/*CSS for Home Dashboard Page*/
+
+.dashboard-wrapper {
+    margin: 0;
+    padding-top: 5px;
+    width: 100%;
+    height: 90vh;
+    font-family: Dubai;
+}
+
+.dashboard-horizontal {
+    height: 40vh;
+}
+
+    .dashboard-horizontal > h1 {
+        font-family: inherit;
+        font-weight: normal;
+        text-align: center;
+        margin: 35px;
+    }
+
+.dashboard-vertical {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.dashboard-update {
+    width: 70vh;
+}
+
+.dashboard-costs {
+    width: 30vh;
+}
+
+.dashboard-header {
+    margin: 15px;
+    padding-bottom: 40px;
+}
+
+.dl-horizontal {
+    display: block;
+    margin: auto;
+}
+
+.summary-table {
+    font-size: 20px;
+}
+
+    .summary-table h1 {
+        font-size: 30px;
+        padding-bottom: 50px;
+    }
+
+.dashboard-btn {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+    .dashboard-btn {
+        background-color: darkgrey;
+        color: black;
+    }
+
+.notifications {
+    font-size: 15px;
+    padding: 10px;
+    background-color: rgb(243,240,243);
+}
+
+.row {
+    padding: 40px;
+}
