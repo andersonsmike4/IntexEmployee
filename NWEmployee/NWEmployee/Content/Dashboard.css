@@ -20,8 +20,7 @@
 }
 
     #sidebar .sidebar-header {
-        padding: 20px;
-        font-family: Dubai;
+        padding: 10px;
         text-align: center;
     }
 
@@ -146,13 +145,11 @@
     font-family: Dubai;
 }
 
-.indent {
-    padding-left: 18px;
+.table tr td a {
+    padding: 10px;
+    text-decoration: underline !important;
 }
 
-.hr {
-    border: 0 none;
-    color: rgb(243,240,243);
-    height: 20px;
-    background-color: rgb(243,240,243);
-}
+    .table tr td a:hover {
+        text-decoration: none !important;
+    }

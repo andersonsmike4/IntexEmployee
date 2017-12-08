@@ -17,6 +17,12 @@ namespace NWEmployee.Models
         public string compoundName;
     }
 
+    public class Samples
+    {
+        public int sampleID;
+        public string assayName;
+    }
+
     public class Tests
     {
         public int testTubeID;

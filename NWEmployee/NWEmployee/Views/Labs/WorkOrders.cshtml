@@ -8,7 +8,9 @@
     <nav id="sidebar">
         <!-- Sidebar Header -->
         <div class="sidebar-header">
-            <h3>Northwest Labs</h3>
+            <div class="container-fluid">
+                <img src="~/Content/images/NW_logo.png" style="width: 100%; padding: 10px" />
+            </div>
         </div>
 
         <!-- Sidebar Links -->
@@ -34,25 +36,25 @@
                     <th>Work Order</th>
                     <th>Company</th>
                 </tr>
-                <tr>
                     @foreach (var item in ViewBag.workOrderList)
                     {
-                        <td>
-                            <a href="@Url.Action("WorkOrdersCom", "Labs", new { item.workOrderID })">
-                                @item.workOrderID
-                            </a>
-                        </td>
-                        <td>
-                            @item.customerName
-                        </td>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("WorkOrdersCom", "Labs", new { item.workOrderID })">
+                                    @item.workOrderID
+                                </a>
+                            </td>
+                            <td>
+                                @item.customerName
+                            </td>
+                        </tr>
                     }
-                </tr>
             </table>
         }
         else if (ViewBag.type == "CO")
         {
             <div class="sidebar-header">
-                <h3>Work Order: @ViewBag.workOrderID</h3>
+                <h3><a href="@Url.Action("WorkOrders", "Labs")">Work Order: @ViewBag.workOrderID</a></h3>
             </div>
 
             <table class="table">
@@ -78,21 +80,25 @@
         else if (ViewBag.type == "SA")
         {
             <div class="sidebar-header">
-                <h3>Work Order: @ViewBag.workOrderID</h3>
-                <h3>Compound: @ViewBag.LT</h3>
+                <h3><a href="@Url.Action("WorkOrders", "Labs")">Work Order: @ViewBag.workOrderID</a></h3>
+                <h3><a href="@Url.Action("WorkOrdersCom", "Labs", new { ViewBag.workOrderID })">Compound: @ViewBag.LTNum</a></h3>
             </div>
 
             <table class="table">
                 <tr>
                     <th>Sample ID</th>
+                    <th>Assay</th>
                 </tr>
-                @foreach (var item in ViewBag.samples)
+                @foreach (var sample in ViewBag.samples)
                 {
                     <tr>
                         <td>
-                            <a href="@Url.Action("WorkOrdersTest", "Labs")">
-                                @item
+                            <a href="@Url.Action("WorkOrdersTest", "Labs", new { ViewBag.workOrderID, ViewBag.LTNum, sample.sampleID } )">
+                                @sample.sampleID
                             </a>
+                        </td>
+                        <td>
+                            @sample.assayName
                         </td>
                     </tr>
                 }
@@ -101,9 +107,9 @@
         else if (ViewBag.type == "TE")
         {
             <div class="sidebar-header">
-                <h3>Work Order: @ViewBag.workOrderID</h3>
-                <h3>Compound: @ViewBag.LT</h3>
-                <h3>Sample: @ViewBag.LT</h3>
+                <h3><a href="@Url.Action("WorkOrders", "Labs")">Work Order: @ViewBag.workOrderID</a></h3>
+                <h3><a href="@Url.Action("WorkOrdersCom", "Labs", new { ViewBag.workOrderID })">Compound: @ViewBag.LTNum</a></h3>
+                <h3><a href="@Url.Action("WorkOrdersSam", "Labs", new { ViewBag.workOrderID, ViewBag.LTNum })">Sample: @ViewBag.sampleID</a></h3>
             </div>
         }
 
@@ -113,7 +119,7 @@
         <div class="container-fluid dashboard-container">
             @if (ViewBag.type == "TE")
             {
-                <table>
+                <table class="table">
                     <tr>
                         <th>ID</th>
                         <th>Test</th>
@@ -121,7 +127,16 @@
                         <th>Start Date</th>
                         <th>End Date</th>
                     </tr>
-                    <tr></tr>
+                    @foreach(var test in ViewBag.tests)
+                    {
+                        <tr>
+                            <td>@test.testTubeID</td>
+                            <td>@test.testName</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    }
                 </table>
             }
         </div>

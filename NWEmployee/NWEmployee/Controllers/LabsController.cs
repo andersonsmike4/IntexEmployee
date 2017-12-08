@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace NWEmployee.Controllers
 {
+    [Authorize]
     public class LabsController : Controller
     {
         NorthwestContext db = new NorthwestContext();
@@ -60,20 +61,41 @@ namespace NWEmployee.Controllers
         public ActionResult WorkOrdersSam(int workOrderID, int LTNum)
         {
             ViewBag.type = "SA";
-            Stack samples = new Stack();
-            IEnumerable<int> list = db.Database.SqlQuery<int>("SELECT [sampleID(LT + Sequence)] FROM Samples WHERE LTNum = " + LTNum).ToList();
+            Stack<Samples> samples = new Stack<Samples>();
+            IEnumerable<int> list = db.Database.SqlQuery<int>("SELECT sampleID FROM Samples WHERE LTNum = " + LTNum).ToList();
             foreach (var item in list)
             {
-                samples.Push(item);
+                Samples sample = new Samples();
+                var assayName = db.Database.SqlQuery<string>("SELECT name FROM Samples INNER JOIN Assays ON Samples.assayID = Assays.assayID WHERE sampleID = " + item).FirstOrDefault();
+                sample.sampleID = item;
+                sample.assayName = assayName;
+                samples.Push(sample);
             }
             ViewBag.samples = samples;
-            ViewBag.LT = LTNum;
+            ViewBag.LTNum = LTNum;
             ViewBag.workOrderID = workOrderID;
             return View("WorkOrders");
         }
 
-        public ActionResult WorkOrdersTest()
+        public ActionResult WorkOrdersTest(int workOrderID, int LTNum, int sampleID)
         {
+            ViewBag.type = "TE";
+            
+            List<Tests> tests = new List<Tests>();
+            IEnumerable<int> list = db.Database.SqlQuery<int>("SELECT SerialTestID FROM testTube INNER JOIN Serialized_Tests ON testTube.serialID = Serialized_Tests.SerialTestID WHERE sampleID = " + sampleID).ToList();
+
+            foreach(var serialTestID in list)
+            {
+                Tests test = new Tests();
+                var testName = db.Database.SqlQuery<string>("SELECT Tests.testName FROM Serialized_Tests INNER JOIN Tests ON Serialized_Tests.testID = Tests.testID WHERE SerialTestID = " + serialTestID).FirstOrDefault();
+                test.testTubeID = serialTestID;
+                test.testName = testName;
+                tests.Add(test);
+            }
+            ViewBag.tests = tests;
+            ViewBag.workOrderID = workOrderID;
+            ViewBag.LTNum = LTNum;
+            ViewBag.sampleID = sampleID;
             return View("WorkOrders");
         }
     }
