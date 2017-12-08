@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Northwest Intranet</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -15,6 +15,9 @@
             <a class="brand" style="padding: 0" href="@Url.Action("Index", "Home")">
                 @*<img src="~/Content/images/NW_logo.png" style="height: 60px; filter: brightness(0) invert(1); position: relative; margin: 1px" />*@
             </a>
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial");
+            </div>
         </div>
     </div>
     @RenderBody()
