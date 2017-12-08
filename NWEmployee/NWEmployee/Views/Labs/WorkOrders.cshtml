@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "WorkOrders";
+}
+
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h3>Northwest Labs</h3>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Customers</a></li>
+            <li class="active"><a href="#">Work Orders</a></li>
+            <li><a href="#">Schedule</a></li>
+            <li><a href="#">Order Materials</a></li>
+        </ul>
+    </nav>
+
+    <div id="sidebar" style="min-width: 350px;">
+        <!-- Sidebar Header -->
+        @if (ViewBag.type == "WO")
+        {
+            <div class="sidebar-header">
+                <h3>Work Orders</h3>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>Work Order</th>
+                    <th>Company</th>
+                </tr>
+                <tr>
+                    @foreach (var item in ViewBag.workOrderList)
+                    {
+                        <td>
+                            <a href="@Url.Action("WorkOrdersCom", "Labs", new { item.workOrderID })">
+                                @item.workOrderID
+                            </a>
+                        </td>
+                        <td>
+                            @item.customerName
+                        </td>
+                    }
+                </tr>
+            </table>
+        }
+        else if (ViewBag.type == "CO")
+        {
+            <div class="sidebar-header">
+                <h3>Work Order: @ViewBag.workOrderID</h3>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>Compound ID</th>
+                    <th>Name</th>
+                </tr>
+                @foreach (var item in ViewBag.compounds)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("WorkOrdersSam", "Labs", new { ViewBag.workOrderID, item.LTNum })">
+                                @item.LTNum
+                            </a>
+                        </td>
+                        <td>
+                            @item.compoundName
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else if (ViewBag.type == "SA")
+        {
+            <div class="sidebar-header">
+                <h3>Work Order: @ViewBag.workOrderID</h3>
+                <h3>Compound: @ViewBag.LT</h3>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>Sample ID</th>
+                </tr>
+                @foreach (var item in ViewBag.samples)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("WorkOrdersTest", "Labs")">
+                                @item
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else if (ViewBag.type == "TE")
+        {
+            <div class="sidebar-header">
+                <h3>Work Order: @ViewBag.workOrderID</h3>
+                <h3>Compound: @ViewBag.LT</h3>
+                <h3>Sample: @ViewBag.LT</h3>
+            </div>
+        }
+
+    </div>
+
+    <div class="container-fluid dashboard-wrapper">
+        <div class="container-fluid dashboard-container">
+            @if (ViewBag.type == "TE")
+            {
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Test</th>
+                        <th>Result</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    <tr></tr>
+                </table>
+            }
+        </div>
+    </div>
+</div>

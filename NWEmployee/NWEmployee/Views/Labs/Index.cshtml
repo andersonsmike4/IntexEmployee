@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -17,18 +16,10 @@
         <ul class="list-unstyled components">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Customers</a></li>
-            <li><a href="#" >Receive Work Orders</a></li>    
-            <li><a href="#">Update Work Orders</a></li>
+            <li><a href="@Url.Action("WorkOrders", "Labs")">Work Orders</a></li>
             <li><a href="#">Schedule</a></li>
             <li><a href="#">Order Materials</a></li>
         </ul>
     </nav>
 
-    <div class="container-fluid dashboard-wrapper">
-        <div class="container-fluid dashboard-container">
-        </div>
-    </div>
-
 </div>
-
-
