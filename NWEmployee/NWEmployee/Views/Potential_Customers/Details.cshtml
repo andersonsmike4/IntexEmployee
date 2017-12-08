@@ -1,0 +1,84 @@
+﻿@model NWEmployee.Models.Potential_Customers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h3>Northwest Labs</h3>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li class="active">@Html.ActionLink("Home", "Index", "Sales")</li>
+            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+            <li>@Html.ActionLink("Potential Customers", "Index", "Potential_Customers")</li>
+            <li><a href="#">Work Orders</a></li>
+            <li><a href="#">Back Orders</a></li>
+            <li><a href="#">Discounts</a></li>
+            <li><a href="#">Marketing</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid dashboard-wrapper" style="margin-left: 15px;">
+        <div class="container-fluid dashboard-container">
+
+            <h2>Potential Customer Details</h2>
+
+            <div>
+                
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.companyName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.companyName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ContactName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ContactName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.contactPhone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.contactPhone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.contactEmail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.contactEmail)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.notes)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.notes)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.potentialID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NWEmployee.Models.Potential_Customers>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h3>Northwest Labs</h3>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li class="active">@Html.ActionLink("Home", "Index", "Sales")</li>
+            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+            <li>@Html.ActionLink("Potential Customers", "Index", "Potential_Customers")</li>
+            <li><a href="#">Work Orders</a></li>
+            <li><a href="#">Back Orders</a></li>
+            <li><a href="#">Discounts</a></li>
+            <li><a href="#">Marketing</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid dashboard-wrapper" style="margin-left: 15px;">
+        <div class="container-fluid dashboard-container">
+            <h2>Potential Customers</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.companyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.contactPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.contactEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notes)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.companyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.contactPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.contactEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.notes)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.potentialID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.potentialID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.potentialID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<NWEmployee.Models.Invoices>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h3>Northwest Labs</h3>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li class="active">@Html.ActionLink("Home", "Index", "Billings")</li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Work Orders</a></li>
+            <li>@Html.ActionLink("Invoices", "Index", "Invoices")</li>
+            <li><a href="#">Receive Payments</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container-fluid dashboard-wrapper">
+        <div class="container-fluid dashboard-container">
+            <div class="container">
+                <h2>Invoices</h2>
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.paymentDueDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.earlyPaymentDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.earlyPaymentDiscount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.mailedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.totalPayment)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.totalPaid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.balance)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.oneTimeDiscount)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.paymentDueDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.earlyPaymentDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.earlyPaymentDiscount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.mailedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.totalPayment)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.totalPaid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.balance)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.oneTimeDiscount)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.invoiceNo }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.invoiceNo }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.invoiceNo })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

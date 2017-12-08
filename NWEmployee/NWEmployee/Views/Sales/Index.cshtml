@@ -15,10 +15,9 @@
 
         <!-- Sidebar Links -->
         <ul class="list-unstyled components">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#">New Customers</a></li>
-            <li><a href="#">Potential Customers</a></li>
+            <li class="active">@Html.ActionLink("Home", "Index", "Sales")</li>
+            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+            <li>@Html.ActionLink("Potential Customers", "Index", "Potential_Customers")</li>
             <li><a href="#">Work Orders</a></li>
             <li><a href="#">Back Orders</a></li>
             <li><a href="#">Discounts</a></li>
