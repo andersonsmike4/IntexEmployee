@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NWEmployee.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -12,5 +13,10 @@ namespace NWEmployee.DAL
         {
 
         }
+
+        public DbSet<Customers> customers { get; set; }
+        public DbSet<Potential_Customers> p_customers { get; set; }
+        public DbSet<Invoices> invoices { get; set; }
+
     }
 }

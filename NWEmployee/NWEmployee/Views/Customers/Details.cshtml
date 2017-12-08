@@ -1,0 +1,75 @@
+﻿@model NWEmployee.Models.Customers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h3>Northwest Labs</h3>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li class="active">@Html.ActionLink("Home", "Index", "Sales")</li>
+            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+            <li>@Html.ActionLink("Potential Customers", "Index", "Potential_Customers")</li>
+            <li><a href="#">Work Orders</a></li>
+            <li><a href="#">Back Orders</a></li>
+            <li><a href="#">Discounts</a></li>
+            <li><a href="#">Marketing</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid dashboard-wrapper" style="margin-left: 15px;">
+        <div class="container-fluid dashboard-container">
+            <h2>Customer Details</h2>
+
+            <div>
+                
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.custName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.custName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.custAddress)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.custAddress)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.custPhone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.custPhone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.custEmail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.custEmail)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.custID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>
