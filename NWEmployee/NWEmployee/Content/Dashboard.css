@@ -138,6 +138,18 @@
     background-color: rgb(243,240,243);
 }
 
-.row {
-    padding: 40px;
+.panel-body {
+    font-size: 24px;
+    font-family: Dubai;
+}
+
+.indent {
+    padding-left: 18px;
+}
+
+.hr {
+    border: 0 none;
+    color: rgb(243,240,243);
+    height: 20px;
+    background-color: rgb(243,240,243);
 }
